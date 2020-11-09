@@ -14,7 +14,6 @@ def crawler():
     numpages = 0
     links_visited = []
     index_list = []
-    pages_crawled = 0
     page_parser_q = queue.Queue()
     pull_info_q = queue.Queue()
     page_parser_q.put(starting_url)
@@ -109,7 +108,7 @@ def make_index(soup, index_list, link):
     title = re.sub(r'[^\w\s]','',title).lower()
     title = title.strip()
     title = re.sub('\n+','', title)
-    title = re.sub('\s+',' ', title)
+    title = re.sub(r'\s+',' ', title)
     sidebar['title'] = title
     tags = soup.find_all("div", class_ = "Layer Layer--BackgroundWatercolor Util__MobileOnly Special__PrintProgramDetails")
     tags = tags[0].find_all("li", class_ = "Table__Row")
@@ -130,9 +129,9 @@ def make_index(soup, index_list, link):
         if name == 'cost':
             name = 'minimum_cost'
             value = value.split('plus')[0]
-            value = re.sub('\D','', value)
+            value = re.sub(r'\D','', value)
         if name == 'session length':
-            value = re.sub('\D','', value)
+            value = re.sub(r'\D','', value)
             value = int(value) // 7
         if name == 'program types':
             value = re.sub('\n+',' ', value)
@@ -187,3 +186,5 @@ def pull_values(tag):
     else:
         actual_tag = value_tags[0].text.lower()
     return (name, actual_tag)
+
+

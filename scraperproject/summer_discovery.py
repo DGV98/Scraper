@@ -9,14 +9,12 @@ import pandas as pd
 import data_scraping
 
 def crawler():
-    # starting_url = "https://www.teenlife.com/search/?q=None&l=None&c=Summer%20Program&p=1"
     starting_url = "https://www.summerdiscovery.com/finder?location=&grade=&length="
     limiting_domain = "www.summerdiscovery.com"
 
     numpages = 0
     links_visited = []
     index_list = []
-    pages_crawled = 0
     page_parser_q = queue.Queue()
     pull_info_q = queue.Queue()
     page_parser_q.put(starting_url)

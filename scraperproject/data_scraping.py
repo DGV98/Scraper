@@ -106,3 +106,6 @@ def write_to_csv(file_path):
 		good_df.append(clean_data(i))
 	df = pd.concat(good_df, ignore_index = True)
 	df.to_csv(file_path)
+
+if __name__ == '__main__':
+    write_to_csv("data.csv")

@@ -8,7 +8,6 @@ import pandas as pd
 
 
 def crawler():
-    # starting_url = "https://www.teenlife.com/search/?q=None&l=None&c=Summer%20Program&p=1"
     starting_url = "https://www.teenlife.com/search?q=&l=&c=Summer%20Program&p=1"
     limiting_domain = "www.teenlife.com"
     parsing_default_domain = "https://www.teenlife.com/search"
@@ -16,7 +15,6 @@ def crawler():
     numpages = 0
     links_visited = []
     index_list = []
-    pages_crawled = 0
     page_parser_q = queue.Queue()
     pull_info_q = queue.Queue()
     page_parser_q.put(starting_url)
@@ -180,4 +178,5 @@ def pull_values(tag):
         values = grades
 
     return (name, values)
-    # if numbers need to be integer, then would be integer
+
+
